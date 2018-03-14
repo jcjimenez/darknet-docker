@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# This script is mean to serve as a placeholder until nvidia-docker is
-# available for the Jetson TX2. Its recommended usage is the equivalent to a
+# This script is meant to serve as a placeholder until nvidia-docker is
+# available on the Jetson TX2. Its recommended usage is the equivalent to a
 # vanilla `docker run` command with no spaces between `docker` and `run`:
 #
 # ./darknet-docker run --rm -it somedockerimage

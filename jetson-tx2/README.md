@@ -1,15 +1,16 @@
 darknet-docker/jetson-tx2
 =========================
-This Dockerfile can serve as a base image for running darnket/YOLO on an NVIDIA
-Jetson TX2 board running JetPack 3.2.
+This Dockerfile is meant to serve as a base image for running darnket/YOLO on
+an NVIDIA Jetson TX2 board running JetPack 3.2.
 
 Building
 --------
-Sadly, the only reliable way I found to build this is directly from the Jetson.
-So, it is necessary to run a few extra steps besides running a simple
+Sadly, the only reliable way I found to build this is to do so directly on the
+Jetson. So, it is necessary to run a few commands before running
 `docker build .`:
 
 1. Build darknet directly on the TX2:
+
 ```
 git clone https://github.com/pjreddie/darknet
 cd darknet
@@ -17,6 +18,13 @@ sed -i s/GPU=0/GPU=1/g Makefile
 sed -i s/CUDA=0/CUDA=1/g Makefile
 sed -i s/OPENCV=0/OPENCV=1/g Makefile
 make
+cd ..
+```
+
+2. Build the docker image:
+
+```
+docker build .
 ```
 
 Running
