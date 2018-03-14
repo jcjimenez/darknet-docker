@@ -6,7 +6,7 @@ an NVIDIA Jetson TX2 board running JetPack 3.2.
 Running
 -------
 Because `nvidia-docker` was not availabe for the Jetson TX2 at the time this
-was written, so I've included a similar wrapper script called `darknet-docker`
+was written, I've included a similar wrapper script called `darknet-docker`
 which can be used in place of `docker run` on the Jetson TX2 like so:
 
 ```
