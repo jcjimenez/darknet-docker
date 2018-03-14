@@ -3,6 +3,16 @@ darknet-docker/jetson-tx2
 This Dockerfile is meant to serve as a base image for running darnket/YOLO on
 an NVIDIA Jetson TX2 board running JetPack 3.2.
 
+Running
+-------
+Because `nvidia-docker` was not availabe for the Jetson TX2 at the time this
+was written, so I've included a similar wrapper script called `darknet-docker`
+which can be used in place of `docker run` on the Jetson TX2 like so:
+
+```
+./darknet-docker run --rm -it jcjimenez/darknet-docker:jetson-tx2 bash
+```
+
 Building
 --------
 Sadly, the only reliable way I found to build this is to do so directly on the
@@ -25,15 +35,5 @@ cd ..
 
 ```
 docker build .
-```
-
-Running
--------
-Because `nvidia-docker` was not availabe for the Jetson TX2 at the time this
-was written, so I've included a similar wrapper script called `darknet-docker`
-which can be used in place of `docker run` on the Jetson TX2 like so:
-
-```
-./darknet-docker run --rm -it jcjimenez/darknet-docker:jetson-tx2 bash
 ```
 
