@@ -10,8 +10,9 @@
 if [ "$1" != "run" ]; then
     docker $@
 else
-    export DOCKER_DEVICES=`ls -1 /dev/nv* | sed s/^/--device=/g`
+    DOCKER_DEVICES=`ls -1 /dev/nv* | sed s/^/--device=/g`
+    DOCKER_VOLUMES='-v /usr/local/cuda-9.0:/usr/local/cuda-9.0:ro -v /usr/local/cuda:/usr/local/cuda:ro -v /usr/libaarch64-linux-gnu:/usr/libaarch64-linux-gnu:ro -v /usr/lib/aarch64-linux-gnu:/usr/lib/aarch64-linux-gnu:ro -v /etc:/etc:ro'
     shift
-    docker run $DOCKER_VOLUMES $DOCKER_DEVICES $@
+    docker run -e LD_LIBRARY_PATH=$LD_LIBRARY_PATH -e PATH=$PATH $DOCKER_VOLUMES $DOCKER_DEVICES $@
 fi
 
