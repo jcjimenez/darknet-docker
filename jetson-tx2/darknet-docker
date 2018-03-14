@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# This script is mean to serve as a placeholder until nvidia-docker is
+# available for the Jetson TX2. Its recommended usage is the equivalent to a
+# vanilla `docker run` command with no spaces between `docker` and `run`:
+#
+# ./darknet-docker run --rm -it somedockerimage
+#
+
+if [ "$1" != "run" ]; then
+    docker $@
+else
+    export DOCKER_DEVICES=`ls -1 /dev/nv* | sed s/^/--device=/g`
+    shift
+    docker run $DOCKER_VOLUMES $DOCKER_DEVICES $@
+fi
+
