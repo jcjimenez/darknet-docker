@@ -10,7 +10,7 @@ was written, I've included a similar wrapper script called `darknet-docker`
 which can be used in place of `docker run` on the Jetson TX2 like so:
 
 ```
-./darknet-docker run --rm -it jcjimenez/darknet-docker:jetson-tx2 bash
+./darknet-docker run --rm -it jcjimenez/darknet-docker:jetson-tx2-latest
 ```
 
 Building
