@@ -7,6 +7,6 @@ Running
 Since this is a CPU-based image, you can just use the regular docker command:
 
 ```
-docker run --rm -it jcjimenez/darknet-docker:cpu
+docker run --rm -it jcjimenez/darknet-docker:cpu-latest
 ```
 
