@@ -4,7 +4,7 @@ RUN apt-get update && apt-get install -y apt-utils bzip2 curl wget git sudo unp 
 RUN apt-get -y autoremove && apt-get -y autoclean
 RUN rm -rf /var/cache/apt
 
-RUN git clone https://github.com/pjreddie/darknet.git /darknet
+RUN git clone https://github.com/pjreddie/darknet /darknet
 WORKDIR /darknet
 RUN make
 
