@@ -1,0 +1,38 @@
+FROM jcjimenez/darknet-docker:jetson-tx2-latest
+
+RUN apt-get update 
+RUN apt-get install -y \
+    libglew-dev \
+    libtiff5-dev \
+    zlib1g-dev \
+    libjpeg-dev \
+    libpng12-dev \
+    libjasper-dev \
+    libavcodec-dev \
+    libavformat-dev \
+    libavutil-dev \
+    libpostproc-dev \
+    libswscale-dev \
+    libeigen3-dev \
+    libtbb-dev \
+    libgtk2.0-dev \
+    libgstreamer1.0-0 \
+    libwayland-client0 \
+    libwayland-egl1-mesa \
+    libwayland-cursor0 \
+    cmake \
+    pkg-config
+
+RUN apt-get install -y python-dev python-numpy python-py python-pytest -y
+RUN apt-get install -y libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev
+RUN apt-get install -y ffmpeg 
+
+# The opencv-3.4.1.install.tgz was created by running the script in
+#
+# https://github.com/jcjimenez/buildOpenCVTX2
+#
+# and then running something like:
+#
+# tar cfz opencv-3.4.1.install.tgz -T install_.txt 
+ADD opencv-3.4.1.install.tgz / 
+
