@@ -1,10 +1,14 @@
-FROM ubuntu:16.04
+FROM alpine:3.7
 
-RUN apt-get update && apt-get install -y apt-utils bzip2 curl wget git sudo unp cmake && apt-get clean && rm -rf /var/cache/apt
-RUN apt-get -y autoremove && apt-get -y autoclean
-RUN rm -rf /var/cache/apt
+RUN apk add --update --no-cache \
+    alpine-sdk
 
-RUN git clone https://github.com/pjreddie/darknet /darknet
+# Install darknet
+RUN git clone https://github.com/pjreddie/darknet.git /darknet
 WORKDIR /darknet
+RUN git checkout f6d861736038da22c9eb0739dca84003c5a5e275
+RUN echo '#include <sys/select.h>' > examples/go.c.updated
+RUN cat examples/go.c >> examples/go.c.updated
+RUN mv examples/go.c.updated examples/go.c
 RUN make
 
